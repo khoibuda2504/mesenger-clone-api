@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const cors = require('cors')
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const helmet = require("helmet");
@@ -21,7 +22,7 @@ mongoose.connect(
   { useNewUrlParser: true, useUnifiedTopology: true }
 );
 app.use("/images", express.static(path.join(__dirname, "public/images")));
-
+app.use(cors())
 //middleware
 app.use(express.json());
 app.use(helmet());
